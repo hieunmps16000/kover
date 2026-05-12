@@ -1,0 +1,9 @@
+{
+    "scripts": {
+        "minify": "terser kover.js -o kover.min.js && csso kover.css -o kover.min.css"
+    },
+    "dependencies": {
+        "csso-cli": "^4.0.2",
+        "terser": "^5.47.1"
+    }
+}

@@ -1,0 +1,72 @@
+.kover__backdrop {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity, visibility;
+    transition-duration: 0.3s;
+}
+
+.kover__backdrop--show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.kover__container {
+    position: relative;
+    width: min(600px, 100% - 48px);
+    padding: 20px;
+    border-radius: 6px;
+    background: #fff;
+    transform: scale(0);
+    transition: transform 0.3s;
+}
+
+.kover__backdrop--show .kover__container {
+    transform: scale(1);
+}
+
+.kover__close,
+.kover__btn {
+    border: 1px solid #dbdbdb;
+    outline: none;
+    user-select: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.kover__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 2rem;
+    color: #666;
+    background: #ebebeb;
+}
+
+.kover__close:hover {
+    opacity: 0.8;
+}
+
+.kover__content {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.kover__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 20px 0;
+}
+
+.kover--no-scroll {
+    overflow: hidden;
+}
