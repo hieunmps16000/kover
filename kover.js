@@ -176,8 +176,8 @@ Kover.prototype._createButton = function (title, cssClass, callback) {
     button.classList = cssClass;
     button.innerHTML = title;
     if (typeof callback === "function") {
-        button.onclick = () => {
-            callback.call(this);
+        button.onclick = (e) => {
+            callback.call(this, e);
         };
     }
     return button;
