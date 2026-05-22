@@ -1,5 +1,24 @@
 Kover._modalElements = [];
-function Kover(options) {
+function Kover(options = {}) {
+    if (!options.templateId && !options.content) {
+        throw new Error("You must provide one of 'content' or 'templateId'.");
+    }
+
+    if (options.templateId && options.content) {
+        this.template = null;
+        console.warn(
+            "Both 'content' and 'templateId' are specified. 'content' will take precedence, and 'templateId' will be ignored.",
+        );
+    }
+
+    if (options.templateId) {
+        this.template = document.querySelector(`#${options.templateId}`);
+
+        if (!this.template) {
+            throw new Error(`#${options.templateId} does not exist!`);
+        }
+    }
+
     this.opt = Object.assign(
         {
             destroyOnClose: true,
@@ -10,12 +29,6 @@ function Kover(options) {
         options,
     );
 
-    this.template = document.querySelector(`#${this.opt.templateId}`);
-    if (!this.template) {
-        console.error(`${this.opt.templateId} is not exist!`);
-        return;
-    }
-
     this._footerButtons = [];
     this._modalElements = [];
 
@@ -23,6 +36,63 @@ function Kover(options) {
     this._allowBackdropClose = this.opt.closeMethods.includes("overlay");
     this._allowEscapeClose = this.opt.closeMethods.includes("escape");
 }
+
+Kover.prototype.setContent = function (content) {
+    this.opt.content = content;
+    if (this._modalContent) {
+        this._modalContent.innerHTML = this.opt.content;
+    }
+};
+
+Kover.prototype._build = function () {
+    // Làm sao để ưu tiên content
+    const contentNode = this.opt.content ? document.createElement("div") : this.template.content.cloneNode(true);
+
+    if (this.opt.content) {
+        contentNode.innerHTML = this.opt.content;
+    }
+
+    // Create element
+    this._backdrop = document.createElement("div");
+    this._backdrop.classList = "kover__backdrop";
+
+    const container = document.createElement("div");
+    container.classList = "kover__container";
+
+    this.opt.cssClass.forEach((className) => {
+        if (typeof className === "string") {
+            container.classList.add(className);
+        }
+    });
+
+    if (this._allowButtonClose) {
+        const closeBtn = this._createButton("&times;", "kover__close", this.close);
+        container.appendChild(closeBtn);
+    }
+
+    this._modalContent = document.createElement("div");
+    this._modalContent.classList = "kover__content";
+
+    // Append content and elements
+    this._modalContent.appendChild(contentNode);
+    container.appendChild(this._modalContent);
+
+    if (this.opt.footer) {
+        this._modalFooter = document.createElement("div");
+        this._modalFooter.classList = "kover__footer";
+        container.appendChild(this._modalFooter);
+
+        if (this._footerContent) {
+            this._modalFooter.innerHTML = this._footerContent;
+        }
+
+        this._footerButtons.forEach((button) => {
+            this._modalFooter.appendChild(button);
+        });
+    }
+
+    this._backdrop.appendChild(container);
+};
 
 Kover.prototype.open = function () {
     if (!this._backdrop) {
@@ -97,49 +167,6 @@ Kover.prototype._getScrollbarWidth = function () {
     document.body.removeChild(div);
 
     return this._scrollbarWidth;
-};
-
-Kover.prototype._build = function () {
-    const content = this.template.content.cloneNode(true);
-    this._backdrop = document.createElement("div");
-    this._backdrop.classList = "kover__backdrop";
-
-    const container = document.createElement("div");
-    container.classList = "kover__container";
-
-    this.opt.cssClass.forEach((className) => {
-        if (typeof className === "string") {
-            container.classList.add(className);
-        }
-    });
-
-    if (this._allowButtonClose) {
-        const closeBtn = this._createButton("&times;", "kover__close", this.close);
-        container.appendChild(closeBtn);
-    }
-
-    const modalContent = document.createElement("div");
-    modalContent.classList = "kover__content";
-
-    // Append content and elements
-    modalContent.appendChild(content);
-    container.appendChild(modalContent);
-
-    if (this.opt.footer) {
-        this._modalFooter = document.createElement("div");
-        this._modalFooter.classList = "kover__footer";
-        container.appendChild(this._modalFooter);
-
-        if (this._footerContent) {
-            this._modalFooter.innerHTML = this._footerContent;
-        }
-
-        this._footerButtons.forEach((button) => {
-            this._modalFooter.appendChild(button);
-        });
-    }
-
-    this._backdrop.appendChild(container);
 };
 
 Kover.prototype._onTransitionEnd = function (callback) {
