@@ -1,3 +1,9 @@
+html.dark {
+    --kover-container: #2a314e;
+    --kover-close-color: brightness(0) saturate(100%) invert(100%) sepia(2%) saturate(7%) hue-rotate(314deg)
+        brightness(102%) contrast(105%);
+}
+
 .kover__backdrop {
     position: fixed;
     inset: 0;
@@ -20,9 +26,8 @@
 .kover__container {
     position: relative;
     width: min(600px, 100% - 48px);
-    padding: 20px;
     border-radius: 6px;
-    background: #fff;
+    background: var(--kover-container, #fff);
     transform: scale(0);
     transition: transform 0.3s;
 }
@@ -31,25 +36,27 @@
     transform: scale(1);
 }
 
-.kover__close,
-.kover__btn {
-    border: 1px solid #dbdbdb;
+.kover__close {
+    position: absolute;
+    top: 10px;
+    right: 28px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgb(0, 0, 0, 0.05);
     outline: none;
     user-select: none;
     cursor: pointer;
     font-family: inherit;
 }
 
-.kover__close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    font-size: 2rem;
-    color: #666;
-    background: #ebebeb;
+.kover__close svg {
+    width: 20px;
+    filter: var(--kover-close-color);
 }
 
 .kover__close:hover {
@@ -57,6 +64,7 @@
 }
 
 .kover__content {
+    padding: 26px 32px;
     max-height: 80vh;
     overflow-y: auto;
 }
@@ -64,10 +72,10 @@
 .kover__footer {
     display: flex;
     justify-content: flex-end;
-    gap: 8px;
-    padding: 20px 0;
+    gap: 10px;
+    padding: 0 32px 26px;
 }
 
 .kover--no-scroll {
-    overflow: hidden;
+    overflow: hidden !important;
 }

@@ -1,20 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Kover.js: A Vanilla JavaScript Modal Library</title>
-        <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon" />
+        <link rel="shortcut icon" href="./src/favicon.png" type="image/x-icon" />
         <link rel="stylesheet" href="./vendor/prism.css" />
         <link rel="stylesheet" href="./kover.css" />
-        <link rel="stylesheet" href="./assets/styles.css" />
+        <link rel="stylesheet" href="./src/styles.css" />
     </head>
     <body>
         <!-- HEADER -->
         <header class="header">
             <div class="container">
-                <h1 class="section-heading section-heading--large">Kover.js</h1>
-                <p class="section-desc section-desc--large text-shadow">
+                <h1 class="section-heading header__title">Kover.js</h1>
+                <p class="section-desc header__desc">
                     A lightweight and simple modal library built with pure JavaScript.
                 </p>
             </div>
@@ -27,8 +27,10 @@
                 <section class="section try-it-out">
                     <h2 class="section-heading">Try It Out</h2>
                     <p>
-                        Kover is a lightweight modal library built with pure JavaScript. (Source code available on
-                        GitHub).
+                        Kover is a lightweight modal library built with pure JavaScript.
+                        <a href="https://github.com/hieunmps16000/kover" target="_blank" rel="noopener"
+                            >(Source code available on GitHub).</a
+                        >
                     </p>
                     <ul class="list">
                         <li>No dependencies</li>
@@ -41,12 +43,16 @@
                     <p>Here are some examples of how to use Kover:</p>
                     <div class="list-buttons">
                         <button id="open-basic-modal" class="btn btn--outline">Basic Modal</button>
-                        <button class="btn btn--outline">Modal with Buttons</button>
-                        <button class="btn btn--outline">Large Content Modal</button>
-                        <button class="btn btn--outline">Footer Only Close Modal</button>
-                        <button class="btn btn--outline">Persistent Modal (Stays in DOM)</button>
-                        <button class="btn btn--outline">Multiple Modals</button>
-                        <button class="btn btn--outline">Youtube Embed Modal</button>
+                        <button id="open-modal-with-buttons" class="btn btn--outline">Modal with Buttons</button>
+                        <button id="open-large-content-modal" class="btn btn--outline">Large Content Modal</button>
+                        <button id="open-footer-only-close-modal" class="btn btn--outline">
+                            Footer Only Close Modal
+                        </button>
+                        <button id="open-persistent-modal" class="btn btn--outline">
+                            Persistent Modal (Stays in DOM)
+                        </button>
+                        <button id="open-multiple-modals" class="btn btn--outline">Multiple Modals</button>
+                        <button id="open-youtube-embed-modal" class="btn btn--outline">Youtube Embed Modal</button>
                     </div>
                 </section>
 
@@ -64,7 +70,14 @@
                             <tr>
                                 <td>Direct Download</td>
                                 <td>
-                                    <p>Download ZIP</p>
+                                    <p>
+                                        <a
+                                            href="https://github.com/hieunmps16000/kover/archive/refs/heads/main.zip"
+                                            title="Download Kover"
+                                            >Download ZIP</a
+                                        >
+                                    </p>
+
                                     <p>
                                         Simply extract the ZIP file and use the
                                         <code>kover.min.js</code> and <code>kover.min.css</code> files in your project.
@@ -222,7 +235,8 @@ modal.close();</code></pre>
                                 <td>onClose</td>
                                 <td>function</td>
                                 <td>
-                                    Callback function executed when the modal closes (default: <code>undefined</code>)
+                                    Callback function executed when the modal closes (default:
+                                    <code>undefined</code>)
                                 </td>
                             </tr>
                         </tbody>
@@ -352,14 +366,171 @@ modal.close();</code></pre>
             <p>Hieu Nguyen - From F8 with love ❤️</p>
         </footer>
 
-        <!-- Templates -->
-        <template id="basic-modal">
-            <h2>Basic Modal</h2>
-            <p>This is a simple modal. You can customize its content as per your requirements.</p>
+        <button class="button-toggle-theme js-toggle-theme">
+            <img src="./src/sun.svg" alt="" class="icon" />
+        </button>
+
+        <!-- Template -->
+        <template id="large-content-modal">
+            <h2>Large Content Modal</h2>
+            <p>
+                Netus vulputate praesent iaculis vel mollis sit facilisi. Aenean semper habitasse suscipit vitae ante
+                sagittis orci integer. Tristique venenatis blandit elit fermentum nisi netus. Lorem sagittis montes;
+                phasellus libero eleifend magna semper iaculis venenatis accumsan fames. Dictumst cursus morbi iaculis
+                egestas egestas facilisis bibendum elit eros?
+            </p>
+            <h3>Suspendisse duis euismod</h3>
+            <p>
+                Adipiscing felis neque venenatis sed tincidunt est curabitur vehicula vivamus, elementum maecenas. Ac
+                mus facilisi dictumst congue, mattis blandit nam facilisis. Suspendisse duis euismod in porttitor
+                vehicula magna integer netus quam.
+            </p>
+            <p><img src="./src/img-1.jpg" alt="" width="100%" /><em>Ut egestas erat ridiculus senectus</em></p>
+            <p>
+                Tempus vivamus pharetra dui praesent elementum ac fringilla dolor nunc. Hac ac posuere ullamcorper
+                nullam magna; tempus cursus facilisi pulvinar varius varius. Aenean rhoncus nec porttitor adipiscing
+                imperdiet netus. Facilisi sollicitudin convallis massa auctor interdum elementum eget congue tellus,
+                varius tortor. Elementum etiam in varius volutpat sodales, vulputate quam ultrices. Ut egestas erat
+                ridiculus senectus vehicula enim.
+            </p>
+            <h3>Maecenas porttitor cum augue</h3>
+            <p>
+                Iaculis facilisis pellentesque suscipit; ipsum dolor donec lacus risus neque quisque risus. Adipiscing
+                nec nec consequat est nec sem felis egestas. Adipiscing sed quis; lectus iaculis imperdiet sollicitudin.
+                Maecenas porttitor cum augue etiam etiam rhoncus hendrerit risus. Vestibulum vestibulum volutpat porta
+                amet curabitur libero.
+            </p>
+            <p><img src="./src/img-2.jpg" alt="" width="100%" /><em>Ut egestas erat ridiculus senectus</em></p>
+            <p>
+                Netus vulputate praesent iaculis vel mollis sit facilisi. Aenean semper habitasse suscipit vitae ante
+                sagittis orci integer. Tristique venenatis blandit elit fermentum nisi netus. Lorem sagittis montes;
+                phasellus libero eleifend magna semper iaculis venenatis accumsan fames. Dictumst cursus morbi iaculis
+                egestas egestas facilisis bibendum elit eros.
+            </p>
         </template>
 
         <script src="./vendor/prism.js"></script>
         <script src="./kover.js"></script>
-        <script src="./assets/scripts.js"></script>
+        <!-- Toggle theme -->
+        <script>
+            const $ = document.querySelector.bind(document);
+            $(".js-toggle-theme").onclick = (e) => {
+                const img = e.currentTarget.querySelector(".icon");
+                const sunImg = "/src/sun.svg";
+                const moonImg = "/src/moon.svg";
+
+                if (img.src.includes(sunImg)) {
+                    img.src = moonImg;
+                } else {
+                    img.src = sunImg;
+                }
+
+                document.documentElement.classList.toggle("dark");
+            };
+        </script>
+        <script>
+            // Basic modal
+            const basicModal = new Kover({
+                content: `
+                    <h2>Basic Modal</h2>
+                    <p>This is a simple modal. You can customize its content as per your requirements.</p>
+                `,
+            });
+            $("#open-basic-modal").onclick = () => {
+                basicModal.open();
+            };
+
+            // Modal with Buttons
+            const modalWithButton = new Kover({
+                content: `
+                    <h2>Modal with Buttons</h2>
+                    <p>This modal includes functional buttons for actions such as canceling or confirming.</p>
+                `,
+                footer: true,
+            });
+            modalWithButton.addFooterButton("Cancel", "btn btn--outline", (e) => {
+                modalWithButton.close();
+            });
+            modalWithButton.addFooterButton("Agree", "btn", (e) => {
+                modalWithButton.close();
+            });
+            $("#open-modal-with-buttons").onclick = () => {
+                modalWithButton.open();
+            };
+
+            // Large Content Modal
+            const largeContentModal = new Kover({
+                content: `
+                    <h2>Large Content Modal</h2>
+                    <p>Netus vulputate praesent iaculis vel mollis sit facilisi. Aenean semper habitasse suscipit vitae ante sagittis orci integer. Tristique venenatis blandit elit fermentum nisi netus. Lorem sagittis montes; phasellus libero eleifend magna semper iaculis venenatis accumsan fames. Dictumst cursus morbi iaculis egestas egestas facilisis bibendum elit eros?</p>
+                    <h3>Suspendisse duis euismod</h3>
+                    <p>Adipiscing felis neque venenatis sed tincidunt est curabitur vehicula vivamus, elementum maecenas. Ac mus facilisi dictumst congue, mattis blandit nam facilisis. Suspendisse duis euismod in porttitor vehicula magna integer netus quam.</p>
+                    <p><img src="./src/img-1.jpg" alt="" width="100%" /><em>Ut egestas erat ridiculus senectus</em></p>
+                    <p>Tempus vivamus pharetra dui praesent elementum ac fringilla dolor nunc. Hac ac posuere ullamcorper nullam magna; tempus cursus facilisi pulvinar varius varius. Aenean rhoncus nec porttitor adipiscing imperdiet netus. Facilisi sollicitudin convallis massa auctor interdum elementum eget congue tellus, varius tortor. Elementum etiam in varius volutpat sodales, vulputate quam ultrices. Ut egestas erat ridiculus senectus vehicula enim.</p>
+                    <h3>Maecenas porttitor cum augue</h3>
+                    <p>Iaculis facilisis pellentesque suscipit; ipsum dolor donec lacus risus neque quisque risus. Adipiscing nec nec consequat est nec sem felis egestas. Adipiscing sed quis; lectus iaculis imperdiet sollicitudin. Maecenas porttitor cum augue etiam etiam rhoncus hendrerit risus. Vestibulum vestibulum volutpat porta amet curabitur libero.</p>
+                    <p><img src="./src/img-2.jpg" alt="" width="100%" /><em>Ut egestas erat ridiculus senectus</em></p>
+                    <p>Netus vulputate praesent iaculis vel mollis sit facilisi. Aenean semper habitasse suscipit vitae ante sagittis orci integer. Tristique venenatis blandit elit fermentum nisi netus. Lorem sagittis montes; phasellus libero eleifend magna semper iaculis venenatis accumsan fames. Dictumst cursus morbi iaculis egestas egestas facilisis bibendum elit eros.</p>
+                `,
+                destroyOnClose: false,
+            });
+            $("#open-large-content-modal").onclick = () => {
+                largeContentModal.open();
+            };
+
+            // Footer Only Close Modal
+            const footerOnlyCloseModal = new Kover({
+                content: `
+                    <h2>Footer-Only Close Modal</h2>
+                    <p>This modal can only be closed via the button in the footer for a controlled experience.</p>
+                `,
+                closeMethods: [],
+                footer: true,
+            });
+            footerOnlyCloseModal.addFooterButton("Close", "btn", () => {
+                footerOnlyCloseModal.close();
+            });
+            $("#open-footer-only-close-modal").onclick = () => {
+                footerOnlyCloseModal.open();
+            };
+
+            // Persistent Modal (Stays in DOM)
+            const persistentModal = new Kover({
+                content: `
+                    <h2>Persistent Modal</h2>
+                    <p>This modal stays in the DOM even after being closed, allowing you to reopen it without losing any changes.</p>
+                    <p>You can write something in the input below, close the modal, and reopen it to see the content still intact.</p>
+                    <input class="modal__input" type="text" placeholder="Type something here..." />
+                `,
+                destroyOnClose: false,
+            });
+            $("#open-persistent-modal").onclick = () => {
+                persistentModal.open();
+            };
+
+            // Multiple Modals
+            const multipleModals = new Kover({
+                content: `
+                    <h2>Multiple Modals</h2>
+                    <p>This modal demonstrates interaction between multiple modals. You can open another modal from here.</p>
+                    <button class="btn" onclick="basicModal.open()">Open Basic Modal</button>
+                `,
+                destroyOnClose: false,
+            });
+            $("#open-multiple-modals").onclick = () => {
+                multipleModals.open();
+            };
+
+            // YouTube Embed Modal
+            const youtubeEmbedModal = new Kover({
+                content: `
+                    <div class="youtube-wrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/hzg7gKJ-pZs?si=webxGUxlJqz2O8de" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                `,
+                cssClassContent: ["no-padding"],
+            });
+            $("#open-youtube-embed-modal").onclick = () => {
+                youtubeEmbedModal.open();
+            };
+        </script>
     </body>
 </html>

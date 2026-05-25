@@ -1,0 +1,451 @@
+/* Begin reset css */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol,
+ul {
+    list-style: none;
+}
+blockquote,
+q {
+    quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* End reset css */
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --text-color: #333;
+    --body-background: #fff;
+    --primary-color: #f7931a;
+    --thead-bg-color: #d2d2d2;
+    --border-color: #dbdbdb;
+    --quote-bg-color: rgb(0, 0, 0, 0.05);
+    --code-bg-color: rgb(0, 0, 0, 0.08);
+}
+
+html.dark {
+    --text-color: #fff;
+    --body-background: #191d1e;
+    --thead-bg-color: #ffffff14;
+    --border-color: #ffffff1a;
+    --quote-bg-color: rgb(255, 255, 255, 0.05);
+    --code-bg-color: rgb(255, 255, 255, 0.1);
+}
+
+html {
+    font-size: 62.5%;
+    font-weight: 400;
+}
+
+body {
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        "Open Sans",
+        "Helvetica Neue",
+        sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: var(--body-background);
+}
+
+/* Begin Common */
+a {
+    color: var(--primary-color);
+}
+
+.container {
+    width: min(960px, 100% - 40px);
+    margin: 0 auto;
+}
+
+.section {
+    padding: 30px 0;
+}
+
+.section p {
+    margin: 16px 0;
+}
+
+.section-heading {
+    margin-bottom: 16px;
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--text-color);
+}
+
+html.dark .section-heading {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px currentColor;
+}
+
+html.dark .text-shadow {
+    text-shadow: 0 0 8px #00ff41;
+}
+
+button {
+    border: none;
+    outline: none;
+    font-family: inherit;
+    color: inherit;
+    cursor: pointer;
+    user-select: none;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 24px;
+    border-radius: 8px;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(120deg, #f59e0b, #f97316);
+    box-shadow: 0 6px 18px rgba(249, 115, 22, 0.3);
+    transition: transform, box-shadow;
+    transition-duration: 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+}
+
+html.dark .btn:hover {
+    box-shadow: 0 0 14px var(--primary-color);
+}
+
+.btn--outline {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    background: transparent;
+    box-shadow: initial;
+}
+/* End Begin Common */
+
+.header {
+    position: relative;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255) 0,
+        rgb(255, 140, 0) 1px,
+        transparent 1px,
+        transparent 20px
+    );
+}
+
+html.dark .header::before {
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(0, 0, 0) 0,
+        rgb(247, 148, 26, 0.5) 1px,
+        transparent 1px,
+        transparent 20px
+    );
+}
+
+.header__title {
+    font-size: 4.8rem;
+    font-weight: 800;
+    color: var(--primary-color);
+}
+
+.header__desc {
+    font-size: 2rem;
+}
+
+.list {
+    margin: 30px 0;
+    padding-left: 40px;
+    list-style: circle;
+}
+
+.list li {
+    margin: 7px 0;
+}
+
+.list-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+code {
+    font-size: 1.5rem;
+    padding: 2px 4px;
+    background: var(--code-bg-color);
+    font-family: monospace;
+}
+
+table {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #ffffff0d;
+}
+
+thead {
+    font-weight: 500;
+    background: var(--thead-bg-color);
+}
+
+table td {
+    padding: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.quote {
+    padding: 20px;
+    border-radius: 0 8px 8px 0;
+    border-left: 3px solid var(--primary-color);
+    font-style: italic;
+    background: var(--quote-bg-color);
+}
+
+.quote p {
+    margin: 0;
+}
+
+strong {
+    font-weight: 700;
+}
+
+.section pre[class*="language-"] {
+    border-radius: 12px;
+}
+
+.footer {
+    padding: 30px;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.button-toggle-theme {
+    position: fixed;
+    bottom: 40px;
+    right: 20px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgb(255, 255, 255, 0.1);
+    border: 1px solid #dbdbdb;
+}
+
+html.dark .button-toggle-theme {
+    border: none;
+}
+
+.button-toggle-theme .icon {
+    width: 32px;
+    height: 32px;
+    filter: brightness(0) saturate(100%) invert(59%) sepia(48%) saturate(785%) hue-rotate(351deg) brightness(99%)
+        contrast(96%);
+}
+
+/* Modal custom */
+
+.kover__content h2,
+.kover__content h3 {
+    margin-bottom: 10px;
+    font-size: 2.4rem;
+    font-weight: 800;
+}
+
+.kover__content h3 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.kover__content p {
+    margin: 16px 0;
+}
+
+.kover__content img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.kover__content img + em {
+    display: block;
+    text-align: center;
+}
+
+.modal__input {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    outline: none;
+    border: 1px solid var(--border-color);
+    font-size: 1.6rem;
+}
+
+.youtube-wrapper {
+    position: relative;
+    padding-top: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.youtube-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.no-padding {
+    padding: 0;
+}
