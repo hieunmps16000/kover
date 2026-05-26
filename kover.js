@@ -21,13 +21,13 @@ function Kover(options = {}) {
 
     this.opt = Object.assign(
         {
-            enableScrollbar: false,
-            destroyOnClose: true,
             footer: false,
-            closeMethods: ["button", "overlay", "escape"],
+            enableScrollLock: true,
+            destroyOnClose: true,
             cssClass: [],
             cssClassContent: [],
-            targetScrollLock: () => document.documentElement,
+            closeMethods: ["button", "overlay", "escape"],
+            scrollLockTarget: () => document.documentElement,
         },
         options,
     );
@@ -49,7 +49,7 @@ Kover.prototype._build = function () {
 
     // Create element
     this._backdrop = document.createElement("div");
-    this._backdrop.classList = "kover__backdrop";
+    this._backdrop.classList = "kover";
 
     const container = document.createElement("div");
     container.classList = "kover__container";
@@ -179,11 +179,11 @@ Kover.prototype.open = function () {
 
     // Reflow and Show modal
     this._backdrop.offsetHeight;
-    this._backdrop.classList.add("kover__backdrop--show");
+    this._backdrop.classList.add("kover--show");
 
     // Disable scrolling
-    if (!this.opt.enableScrollbar) {
-        const target = this.opt.targetScrollLock();
+    if (this.opt.enableScrollLock) {
+        const target = this.opt.scrollLockTarget();
         const hasScrollbar = this._hasScrollbar(target);
         if (hasScrollbar) {
             target.classList.add("kover--no-scroll");
@@ -211,7 +211,7 @@ Kover.prototype.open = function () {
 
 Kover.prototype.close = function (destroy = this.opt.destroyOnClose) {
     Kover._modalElements.pop();
-    this._backdrop.classList.remove("kover__backdrop--show");
+    this._backdrop.classList.remove("kover--show");
 
     this._onTransitionEnd(() => {
         if (typeof this.opt.onClose === "function") this.opt.onClose();
@@ -224,8 +224,8 @@ Kover.prototype.close = function (destroy = this.opt.destroyOnClose) {
     });
 
     // Enable scrolling
-    if (!Kover._modalElements.length && !this.opt.enableScrollbar) {
-        const target = this.opt.targetScrollLock();
+    if (!Kover._modalElements.length && this.opt.enableScrollLock) {
+        const target = this.opt.scrollLockTarget();
         const hasScrollbar = this._hasScrollbar(target);
         if (hasScrollbar) {
             target.classList.remove("kover--no-scroll");

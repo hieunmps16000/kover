@@ -449,3 +449,7 @@ html.dark .button-toggle-theme {
 .no-padding {
     padding: 0;
 }
+
+.kover__container.bg-transparent {
+    background: transparent;
+}

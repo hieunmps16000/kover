@@ -4,7 +4,7 @@ html.dark {
         brightness(102%) contrast(105%);
 }
 
-.kover__backdrop {
+.kover {
     position: fixed;
     inset: 0;
     z-index: 9999;
@@ -18,7 +18,7 @@ html.dark {
     transition-duration: 0.3s;
 }
 
-.kover__backdrop--show {
+.kover--show {
     opacity: 1;
     visibility: visible;
 }
@@ -32,7 +32,7 @@ html.dark {
     transition: transform 0.3s;
 }
 
-.kover__backdrop--show .kover__container {
+.kover--show .kover__container {
     transform: scale(1);
 }
 

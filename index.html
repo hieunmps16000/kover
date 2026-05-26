@@ -186,6 +186,14 @@ modal.close();</code></pre>
                                 </td>
                             </tr>
                             <tr>
+                                <td>cssClassContent</td>
+                                <td>array</td>
+                                <td>
+                                    Custom CSS classes applied to the modal content (default:
+                                    <code>[]</code>)
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>footer</td>
                                 <td>boolean</td>
                                 <td>Shows a footer in the modal (default: <code>false</code>)</td>
@@ -526,7 +534,9 @@ modal.close();</code></pre>
                 content: `
                     <div class="youtube-wrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/hzg7gKJ-pZs?si=webxGUxlJqz2O8de" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
                 `,
+                cssClass: ["bg-transparent"],
                 cssClassContent: ["no-padding"],
+                closeMethods: ["overlay", "escape"],
             });
             $("#open-youtube-embed-modal").onclick = () => {
                 youtubeEmbedModal.open();
