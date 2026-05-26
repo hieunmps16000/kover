@@ -424,8 +424,10 @@ modal.close();</code></pre>
             const $ = document.querySelector.bind(document);
             $(".js-toggle-theme").onclick = (e) => {
                 const img = e.currentTarget.querySelector(".icon");
-                const sunImg = "src/sun.svg";
-                const moonImg = "src/moon.svg";
+                const isGitHubPages = window.location.hostname.includes("github.io");
+                const basePath = isGitHubPages ? `/${window.location.pathname.split("/")[1]}` : "";
+                const sunImg = `${basePath}/src/sun.svg`;
+                const moonImg = `${basePath}/src/moon.svg`;
 
                 if (img.src.includes(sunImg)) {
                     img.src = moonImg;
