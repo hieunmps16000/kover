@@ -46,9 +46,10 @@ html.dark {
     justify-content: center;
     width: 32px;
     height: 32px;
+    border: none;
+    outline: none;
     border-radius: 50%;
     background: rgb(0, 0, 0, 0.05);
-    outline: none;
     user-select: none;
     cursor: pointer;
     font-family: inherit;
